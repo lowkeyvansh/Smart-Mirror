@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Smart Mirror</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        h1, h2, h3 {
+            margin: 0;
+            padding: 0;
+        }
+        #time {
+            font-size: 100px;
+            margin-top: 20px;
+        }
+        #date {
+            font-size: 40px;
+            margin-top: -20px;
+        }
+        #weather {
+            font-size: 40px;
+            margin-top: 40px;
+        }
+        #news {
+            font-size: 30px;
+            margin-top: 60px;
+        }
+        #compliments {
+            font-size: 50px;
+            margin-top: 80px;
+        }
+    </style>
+</head>
+<body>
+    <div id="time">{{ time }}</div>
+    <div id="date">{{ date }}</div>
+    <div id="weather">
+        {{ weather.city }}: {{ weather.temperature }}°C, {{ weather.description }}
+    </div>
+    <div id="news">
+        <h3>Top News:</h3>
+        <ul>
+            {% for headline in news %}
+                <li>{{ headline }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div id="compliments">
+        {{ compliments | random }}
+    </div>
+</body>
+</html>
